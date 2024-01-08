@@ -1,0 +1,463 @@
+<!DOCTYPE>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>꼴뚜기네 반찬가게</title>
+  <link href="css/main_page.css" rel="stylesheet">
+</head>
+
+<body>
+  <header>
+    <button><a href="#">꼴뚜기네 앱 다운로드 ▼</a></button>
+    <nav id="sub1">
+      <ul>
+        <li><a href="#"> 로그인 </a></li>
+        <li>|</li>
+        <li><a href="#"> 회원가입 </a></li>
+        <li>|</li>
+        <li><a href="#"> 고객센터 </a></li>
+        <li>|</li>
+        <li><a href="#"> 주문조회 </a></li>
+        <li>|</li>
+        <li><a href="#"> 장바구니</a></li>
+      </ul>
+    </nav>
+
+    <div id="middle">
+      <nav id="sub2">
+        <ul>
+          <li><a href="#"> 시그니처 </a></li>
+          <li>|</li>
+          <li><a href="#"> 반찬후기 </a></li>
+          <li>|</li>
+          <li><a href="#"> 배송안내</a></li>
+        </ul>
+      </nav>
+      <a href="test.html"><img id="logo" src="img/product/etc/logo.PNG" alt="꼴뚜기네"></a>
+      <img id="searchImg" src="img/product/etc/icon01.png" alt="돋보기" onclick="printSearchResult(productInformation)">
+      <input type="text" onkeypress="printSearchResult(productInformation)" id="word"></input>
+    </div>
+    <nav id="mainNav">
+      <ul>
+        <li><a id="redBack" href="#"> 하루반찬세트 </a></li>
+        <li><a href="#"> 진가네 시그니처 </a></li>
+        <li><a href="#"> 진가네 명품김치 </a></li>
+        <li><a href="#"> 메인반찬 </a></li>
+        <li><a href="#"> 밑반찬 </a></li>
+        <li><a href="#"> 국*찌개 </a></li>
+        <li><a href="#"> 전 </a></li>
+        <li><a href="#"> 나물반찬 </a></li>
+        <li><a href="#"> 장아찌 </a></li>
+        <li><a href="#"> 대용량 </a></li>
+        <li>|</li>
+        <li><a id="red" href="#"> 반찬도매</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div id="slidewrap">
+    <ul class="slide">
+      <li><img src="img/slide03.jpg" alt="slide image"></li>
+      <li><img src="img/slide02.jpg" alt="slide image" id="test2"></li>
+      <li><img src="img/slide03.jpg" alt="slide image" id="test"></li>
+    </ul>
+  </div>
+
+  <section class="beverage"></section>
+  <section class="product"></section>
+
+  <footer>
+    <div id="info01"><img src="img/footer/footer001.png" alt="배송안내"></div>
+
+    <div id="info02">
+      <p>공지사항</p>
+      <div id="footerSlider">그저 그런 날들이 지나고 2024-01-08</div>
+    </div>
+    <div id="info03">
+      <p>가이드</p>
+      <div>
+        <img src="img/footer/footer002.png" alt="배송" class="icon">
+        <p>배송안내</p>
+      </div>
+      <div>
+        <img src="img/footer/footer003.png" alt="혜택" class="icon">
+        <p>첫구매혜택</p>
+      </div>
+      <div>
+        <img src="img/footer/footer004.png" alt="고객센터" class="icon">
+        <p>고객센터</p>
+      </div>
+    </div>
+    <div id="footerBottom">
+      <p id="top">
+        <a href="#">이용약관</a>
+        <a href="#">개인정보처리방침</a>
+      </p>
+
+
+      <pre id="middle">주식회사진가네| 대표이사 : 진성엽| 사업자등록번호 : 611-87-00645 [사업자 정보확인]| 통신판매업신고 : 2018-대구동구-0813호
+
+주소 : 대구광역시 동구 반야월북로2길16-6| 대표번호:1899-7143|개인정보담당자 : 우윤화|이메일 : wooyouna@naver.com
+
+고객님의 안전거래를 위해 현금 등으로 결제 시 kg이니시스의 구매안전 서비스를 이용하실 수 있습니다.</pre>
+      <img src="img/footer/footer005.png" alt="관련업체">
+      <p id="right"><span>고객센터 & 단체구매문의</span><br>
+<span id="tel">1899-7143</span><br>
+평일 09:00~16:00<br>
+점심시간 11:30~12:30<br>
+토·일요일/공휴일 휴무</p>
+    </div>
+  </footer>
+
+
+  <!-- 자바스크립트 -->
+
+  <script>
+    /* 아래 메서드는 해당 프로젝트 제작에 맞춰 만든 사용자 정의 함수로 일부 함수는 재사용하기 위해 수정이 요구됩니다. */
+    /* 태그 생성 메서드 v0.01 */
+    // class속성만 갖는 태그 생성
+    function createTagWithClass(tagName, index) {
+      return '<' + tagName + ' class="' + tagName + index + 'Clone"></' + tagName + '>'
+    }
+
+    // id속성만 갖는 태그 생성
+    function createTagWithId(tagName, id) {
+      return '<' + tagName + ' id="' + id + '"></' + tagName + '>'
+    }
+
+    // class와 id속성을 갖는 태그 생성
+    function createTagWithClassAndId(tagName, id) {
+      return '<' + tagName + ' class="' + tagName + 'Clone" id="' + id + '"></' + tagName + '>'
+    }
+
+    // alt와 id속성을 갖는 img태그 생성
+    function createImgWithId(tagName, url, alt, id) {
+      return '<' + tagName + ' src="' + url + '" alt="' + alt + '" id="' + id + 'Clone"></' + tagName + '>'
+    }
+
+    // class속성과 url속성을 갖는 a태그 생성
+    function createAnchorWithClass(tagName, index, url) {
+      return '<' + tagName + ' href="' + url + '" class="' + tagName + 'Clone"></' + tagName + '>'
+    }
+
+    // tag block 복제
+    function cloneTags(tagBlock, cloneCount) {
+      let cloneTags = "";
+      for (let i = 0; i < cloneCount; i++) {
+        cloneTags += tagBlock;
+      }
+      return cloneTags;
+    }
+
+
+    /* 출력 메서드 v0.01 */
+    // 클래스이름과 인덱스로 tag block 출력
+    function printByClass(className, index, string) {
+      document.getElementsByClassName(className)[index].innerHTML = string;
+    }
+
+    // 특정 형식에 따라 정보 삽입 (img + p + p + p 순으로 쌓여 있는 경우 사용) 
+    function printProuctInformation(productInformation) {
+      for (let i = 0; i < productInformation.length; i++) {
+        printByClass('div0Clone', i, createImgWithId('img', productInformation[i][3], productInformation[i][0], 'img00' + i) + createTagWithClass('p', 0) + createTagWithClass('p', 1) + createTagWithClass('p', 2))
+        printByClass('p0Clone', i, productInformation[i][0]);
+        printByClass('p1Clone', i, productInformation[i][1]);
+        printByClass('p2Clone', i, productInformation[i][2]);
+      }
+    }
+
+    function printBeverageInformation(beverageInformation) {
+      for (let i = 0; i < beverageInformation.length; i++) {
+        printByClass('div1Clone', i, createImgWithId('img', beverageInformation[i][3], beverageInformation[i][0], 'img10' + i) + createTagWithClass('p', 3) + createTagWithClass('p', 4) + createTagWithClass('p', 5))
+        printByClass('p3Clone', i, beverageInformation[i][0]);
+        printByClass('p4Clone', i, beverageInformation[i][1]);
+        printByClass('p5Clone', i, beverageInformation[i][2]);
+      }
+    }
+
+    // 중복 태그 블록을 복제하여 출력
+    function printCloneBlock(productInformation, className, index, string) {
+      document.getElementsByClassName(className)[index].innerHTML = string;
+      printProuctInformation(productInformation)
+    }
+
+    function printCloneBlockBeverage(beverageInformation, className, index, string) {
+      document.getElementsByClassName(className)[index].innerHTML = string;
+      printBeverageInformation(beverageInformation)
+    }
+
+
+    /* 슬라이더 페이드 인 페이드 아웃 아직 알고리즘을 만들지 못하고 하드 코딩 함!! 3개 이미지용 */
+
+
+    function test10() {
+      document.getElementById('test').style.opacity = '1'
+    }
+    function test9() {
+      document.getElementById('test').style.opacity = '0.9'
+    }
+    function test8() {
+      document.getElementById('test').style.opacity = '0.8'
+    }
+    function test7() {
+      document.getElementById('test').style.opacity = '0.7'
+    }
+    function test6() {
+      document.getElementById('test').style.opacity = '0.6'
+    }
+    function test5() {
+      document.getElementById('test').style.opacity = '0.5'
+    }
+    function test4() {
+      document.getElementById('test').style.opacity = '0.4'
+    }
+    function test3() {
+      document.getElementById('test').style.opacity = '0.3'
+    }
+    function test2() {
+      document.getElementById('test').style.opacity = '0.2'
+    }
+    function test1() {
+      document.getElementById('test').style.opacity = '0.1'
+    }
+    function test0() {
+      document.getElementById('test').style.opacity = '0'
+    }
+
+
+    function test100() {
+      document.getElementById('test2').style.opacity = '1'
+    }
+    function test99() {
+      document.getElementById('test2').style.opacity = '0.9'
+    }
+    function test88() {
+      document.getElementById('test2').style.opacity = '0.8'
+    }
+    function test77() {
+      document.getElementById('test2').style.opacity = '0.7'
+    }
+    function test66() {
+      document.getElementById('test2').style.opacity = '0.6'
+    }
+    function test55() {
+      document.getElementById('test2').style.opacity = '0.5'
+    }
+    function test44() {
+      document.getElementById('test2').style.opacity = '0.4'
+    }
+    function test33() {
+      document.getElementById('test2').style.opacity = '0.3'
+    }
+    function test22() {
+      document.getElementById('test2').style.opacity = '0.2'
+    }
+    function test11() {
+      document.getElementById('test2').style.opacity = '0.1'
+    }
+    function test00() {
+      document.getElementById('test2').style.opacity = '0'
+    }
+
+
+    function repeat() {
+      let fadeOut1 = [
+        setTimeout(test9, 100),
+        setTimeout(test8, 200),
+        setTimeout(test7, 300),
+        setTimeout(test6, 400),
+        setTimeout(test5, 500),
+        setTimeout(test4, 600),
+        setTimeout(test3, 700),
+        setTimeout(test2, 800),
+        setTimeout(test1, 900),
+        setTimeout(test0, 1000)
+      ];
+
+      let fadeOut2 = [
+        setTimeout(test99, 3000),
+        setTimeout(test88, 3100),
+        setTimeout(test77, 3200),
+        setTimeout(test66, 3300),
+        setTimeout(test55, 3400),
+        setTimeout(test44, 3500),
+        setTimeout(test33, 3600),
+        setTimeout(test22, 3700),
+        setTimeout(test11, 3800),
+        setTimeout(test00, 3900)
+      ];
+
+      let fadeIn2 = [
+        setTimeout(test11, 5900),
+        setTimeout(test22, 6000),
+        setTimeout(test33, 6100),
+        setTimeout(test44, 6200),
+        setTimeout(test55, 6300),
+        setTimeout(test66, 6400),
+        setTimeout(test77, 6500),
+        setTimeout(test88, 6600),
+        setTimeout(test99, 6700),
+        setTimeout(test100, 6800)
+      ];
+
+      let fadeIn1 = [
+        setTimeout(test1, 8800),
+        setTimeout(test2, 8900),
+        setTimeout(test3, 9000),
+        setTimeout(test4, 9100),
+        setTimeout(test5, 9200),
+        setTimeout(test6, 9300),
+        setTimeout(test7, 9400),
+        setTimeout(test8, 9500),
+        setTimeout(test9, 9600),
+        setTimeout(test10, 9700)
+      ];
+    }
+
+    /* 상품 정보 문자열로 배열 만들기*/
+
+    let productData = '순한진미채볶음 75g 진가네 최고의 베스트셀러 소비자가 : 4,200원 판매가 : 4,200원 상품 간략설명 : 진가네 최고의 베스트셀러 새우볶음 75g 달콤고소 눅눅하지 않아요! 소비자가 : 4,400원 판매가 : 4,400원 상품 간략설명 : 달콤고소 눅눅하지 않아요! 진가네 겉절이김치 500g 금방 무친 산뜻한 맛 소비자가 : 10,900원 판매가 : 10,900원 상품 간략설명 : 금방 무친 산뜻한 맛 오이소박이 500g 아삭하고 상큼한 맛 소비자가 : 9,000원 판매가 : 9,000원 상품 간략설명 : 아삭하고 상큼한 맛 동그랑땡 300g/8개 두툼하게 직접 빚어낸 소비자가 : 9,800원 판매가 : 9,800원 상품 간략설명 : 두툼하게 직접 빚어낸 청양고추멸치볶음 100g 입 맛 살려주는 매콤함 소비자가 : 5,900원 판매가 : 5,900원 상품 간략설명 : 입 맛 살려주는 매콤함 생깻잎김치 100g 산들바람처럼 향긋한~ 소비자가 : 4,500원 판매가 : 4,500원 상품 간략설명 : 산들바람처럼 향긋한~ 품절 고들빼기김치 150g 고들빼기로 만든 별미김치 소비자가 : 5,000원 판매가 : 5,000원 상품 간략설명 : 고들빼기로 만든 별미김치 새우볶음 300g 달콤고소 눅눅하지 않아요! 소비자가 : 17,600원 판매가 : 16,720원 상품 간략설명 : 달콤고소 눅눅하지 않아요! 지리멸치볶음 300g 아이반찬으로 적극추천 소비자가 : 18,000원 판매가 : 17,100원 상품 간략설명 : 아이반찬으로 적극추천 도매전용 지리멸치볶음 2kg / 5kg / 10kg 상품 간략설명 : 2kg / 5kg / 10kg 청양고추멸치볶음 300g 입 맛 살려주는 매콤함 소비자가 : 17,700원 판매가 : 16,810원 상품 간략설명 : 입 맛 살려주는 매콤함 도매전용 새우볶음 2kg / 5kg / 10kg 상품 간략설명 : 2kg / 5kg / 10kg 품절 고들빼기김치 1kg 고들빼기로 만든 별미김치 소비자가 : 33,300원 판매가 : 31,630원 상품 간략설명 : 고들빼기로 만든 별미김치 지리멸치볶음 75g 아이반찬으로 적극추천 소비자가 : 4,500원 판매가 : 4,500원 상품 간략설명 : 아이반찬으로 적극추천 진가네 명품김치 배추포기김치 2.3kg 한국인의 혼을 담다 소비자가 : 36,000원 판매가 : 36,000원 상품 간략설명 : 한국인의 혼을 담다 진가네 겉절이김치 500g 금방 무친 산뜻한 맛 소비자가 : 10,900원 판매가 : 10,900원 상품 간략설명 : 금방 무친 산뜻한 맛 열무물김치 400g 더위를 가셔주는 시원한 맛 소비자가 : 3,800원 판매가 : 3,800원 상품 간략설명 : 더위를 가셔주는 시원한 맛 총각김치 500g 아삭아삭 입 속의 경쾌한 소리 소비자가 : 8,900원 판매가 : 8,900원 상품 간략설명 : 아삭아삭 입 속의 경쾌한 소리 파김치 350g 깊은 그늘처럼 우묵한 맛 소비자가 : 8,900원 판매가 : 8,900원 상품 간략설명 : 깊은 그늘처럼 우묵한 맛 부추김치 300g 자꾸만 손이가는 중독성 소비자가 : 7,200원 판매가 : 7,200원 상품 간략설명 : 자꾸만 손이가는 중독성 파김치 700g 깊은 그늘처럼 우묵한 맛 소비자가 : 17,800원 판매가 : 16,910원 상품 간략설명 : 깊은 그늘처럼 우묵한 맛 진가네 명품김치 전체보기 진가네 밑반찬 새우볶음 75g 달콤고소 눅눅하지 않아요! 소비자가 : 4,400원 판매가 : 4,400원 상품 간략설명 : 달콤고소 눅눅하지 않아요! 검정콩조림 100g 국내산 검정콩을 직접 삶아 만든 검정콩조림 소비자가 : 4,000원 판매가 : 4,000원 상품 간략설명 : 국내산 검정콩을 직접 삶아 만든 검정콩조림 멸치양념조림 75g 바쁠 땐 이거 하나로도 한 끼 해결! 소비자가 : 3,500원 판매가 : 3,500원 상품 간략설명 : 바쁠 땐 이거 하나로도 한 끼 해결! 도매전용 쥐포양념볶음 *g 매콤하고 쫄깃한 별미 소비자가 : 4,200원 판매가 : 4,200원 지리멸치볶음 300g 아이반찬으로 적극추천 소비자가 : 18,000원 판매가 : 17,100원 상품 간략설명 : 아이반찬으로 적극추천 매콤한진미채볶음 75g 밑반찬계의 어머니 소비자가 : 4,500원 판매가 : 5,600원 상품 간략설명 : 밑반찬계의 어머니 멸치양념볶음 300g 바쁠 땐 이거 하나로도 한 끼 해결! 소비자가 : 14,000원 판매가 : 13,300원 상품 간략설명 : 바쁠 땐 이거 하나로도 한 끼 해결! 검정콩조림 400g 국내산 검정콩을 직접 삶아 만든 검정콩조림 소비자가 : 16,000원 판매가 : 15,200원 상품 간략설명 : 국내산 검정콩을 직접 삶아 만든 검정콩조림 도매전용 매콤한진미채볶음 2kg / 5kg / 10kg 상품 간략설명 : 2kg / 5kg / 10kg 순한진미채볶음 75g 진가네 최고의 베스트셀러 소비자가 : 4,200원 판매가 : 4,200원 상품 간략설명 : 진가네 최고의 베스트셀러 도매전용 깐멸치볶음 2kg / 5kg / 10kg 상품 간략설명 : 2kg / 5kg / 10kg 도매전용 멸치간장볶음 2kg / 5kg / 10kg 상품 간략설명 : 2kg / 5kg / 10kg 지리멸치볶음 75g 아이반찬으로 적극추천 소비자가 : 4,500원 판매가 : 4,500원 상품 간략설명 : 아이반찬으로 적극추천 도매전용 지리멸치볶음 2kg / 5kg / 10kg 상품 간략설명 : 2kg / 5kg / 10kg 매콤한진미채볶음 300g 밑반찬계의 어머니 소비자가 : 18,000원 판매가 : 17,100원 상품 간략설명 : 밑반찬계의 어머니 진가네 밑반찬 전체보기 진가네 국·찌개 한우육개장(냉동) 400g 제대로 된 국 한그릇 소비자가 : 6,500원 판매가 : 6,500원 상품 간략설명 : 제대로 된 국 한그릇 들깨북어미역국(냉동) 400g 들깨가루를 듬뿍 넣어 고소한 소비자가 : 5,500원 판매가 : 5,500원 상품 간략설명 : 들깨가루를 듬뿍 넣어 고소한 품절 해물순두부국 400g 각 종 해물을 듬뿍 넣어 만든 소비자가 : 6,000원 판매가 : 6,000원 상품 간략설명 : 각 종 해물을 듬뿍 넣어 만든 배추시래기국(냉동) 400g 자극적이지 않아 아이반찬으로도 좋은 소비자가 : 5,000원 판매가 : 5,000원 상품 간략설명 : 자극적이지 않아 아이반찬으로도 좋은 북엇국(냉동) 400g 구수하고 담백하게 정성껏 끓여낸 소비자가 : 5,000원 판매가 : 5,000원 상품 간략설명 : 구수하고 담백하게 정성껏 끓여낸 한우미역국(냉동) 400g 언제 먹어도 맛있는 소비자가 : 5,500원 판매가 : 5,500원 상품 간략설명 : 언제 먹어도 맛있는 품절 우삼겹순두부국 400g 우삼겹과 순두부의 부드러운 조화 소비자가 : 6,500원 판매가 : 6,500원 상품 간략설명 : 우삼겹과 순두부의 부드러운 조화 참치김치찌개 500g 참치를 듬뿍 넣어 끓여낸 소비자가 : 5,900원 판매가 : 5,900원 상품 간략설명 : 참치를 듬뿍 넣어 끓여낸 품절 소고기탕국 400g 구수한 국물 맛이 일품인 소비자가 : 5,500원 판매가 : 5,500원 상품 간략설명 : 구수한 국물 맛이 일품인 진가네 국·찌개 전체보기 진가네 메인반찬 계란말이 200g 두껍게 말아 더 맛있는 소비자가 : 4,900원 판매가 : 4,900원 상품 간략설명 : 두껍게 말아 더 맛있는 두부양념조림 400g 자작하게 국물이 잘 스며든 두부반찬 소비자가 : 6,900원 판매가 : 6,900원 상품 간략설명 : 자작하게 국물이 잘 스며든 두부반찬 메추리알 장조림 400g 국물 맛도 맛있는 진가네 장조림 소비자가 : 7,000원 판매가 : 7,000원 상품 간략설명 : 국물 맛도 맛있는 진가네 장조림 소고기장조림 400g 집에서 한 것처럼 먹기좋게 만들었어요! 소비자가 : 19,500원 판매가 : 19,500원 상품 간략설명 : 집에서 한 것처럼 먹기좋게 만들었어요! 잡채 400g 평범한 식탁을 특별하게 만들어줘요 소비자가 : 8,400원 판매가 : 8,400원 상품 간략설명 : 평범한 식탁을 특별하게 만들어줘요 순살닭볶음탕 600g 뼈가 없어 더 간편하고 맛있는 소비자가 : 11,900원 판매가 : 11,900원 상품 간략설명 : 뼈가 없어 더 간편하고 맛있는 소불고기 300g 아이반찬으로 좋아요! 소비자가 : 7,000원 판매가 : 7,000원 상품 간략설명 : 아이반찬으로 좋아요! 닭가슴살겨자소스냉채 300g 입맛을 돋어줄 알싸한 별미 소비자가 : 7,200원 판매가 : 7,200원 상품 간략설명 : 입맛을 돋어줄 알싸한 별미 품절 더덕무침 300g 더덕의 향긋함을 느낄 수 있는 소비자가 : 8,500원 판매가 : 8,500원 상품 간략설명 : 더덕의 향긋함을 느낄 수 있는 메추리알감자샐러드 300g 일품요리이자 활용성이 좋은 소비자가 : 7,500원 판매가 : 7,500원 상품 간략설명 : 일품요리이자 활용성이 좋은 닭가슴살장조림 200g 부드러운 닭가슴살이라 매력적인 소비자가 : 4,900원 판매가 : 4,900원 상품 간략설명 : 부드러운 닭가슴살이라 매력적인 가지간장볶음 200g 담백고소한 가지반찬 소비자가 : 6,500원 판매가 : 6,500원 상품 간략설명 : 담백고소한 가지반찬 불고기비빔밥 300g 집에서 즐기는 손쉬운 비빔밥 키트 소비자가 : 8,900원 판매가 : 8,900원 상품 간략설명 : 집에서 즐기는 손쉬운 비빔밥 키트 간장 돼지불고기 150g 자꾸만 손이가는 고기반찬 소비자가 : 5,300원 판매가 : 5,300원 상품 간략설명 : 자꾸만 손이가는 고기반찬 숙주햄볶음 150g 고소 짭짤한 맛과 식감이 좋은 소비자가 : 4,500원 판매가 : 4,500원 상품 간략설명 : 고소 짭짤한 맛과 식감이 좋은 고추된장무침 200g 오이같은 아삭함! 소비자가 : 5,500원 판매가 : 5,500원 상품 간략설명 : 오이같은 아삭함! 수제짜장 250g 한 끼 해결하기 좋은 소비자가 : 4,400원 판매가 : 4,400원 상품 간략설명 : 한 끼 해결하기 좋은 코다리간장조림 500g 간장소스로 맵지 않은 쫄깃한 코다리반찬 소비자가 : 8,900원 판매가 : 8,900원 상품 간략설명 : 간장소스로 맵지 않은 쫄깃한 코다리반찬 코다리양념조림 500g 매콤한 양념과 쫄깃한 코다리의 만남 소비자가 : 8,900원 판매가 : 8,900원 상품 간략설명 : 매콤한 양념과 쫄깃한 코다리의 만남 진가네 메인반찬 전체보기 진가네 전 품절 해물부추전 200g 노릇노릇 구워진 해물부추전 소비자가 : 5,400원 판매가 : 5,400원 상품 간략설명 : 노릇노릇 구워진 해물부추전 김치전 200g 직접 담근 김치로 구워낸 소비자가 : 5,400원 판매가 : 5,400원 상품 간략설명 : 직접 담근 김치로 구워낸 진가네 깻잎전 150g/5개 정성으로 직접 구워낸 소비자가 : 9,800원 판매가 : 9,800원 상품 간략설명 : 정성으로 직접 구워낸 동그랑땡 300g/8개 두툼하게 직접 빚어낸 소비자가 : 9,800원 판매가 : 9,800원 상품 간략설명 : 두툼하게 직접 빚어낸 진가네 전 전체보기 진가네 나물반찬 모둠나물 300g 각각의 나물들이 선사하는 산뜻함 소비자가 : 9,800원 판매가 : 9,800원 상품 간략설명 : 각각의 나물들이 선사하는 산뜻함 건취나물볶음 150g 힘이 나는 건강반찬! 소비자가 : 4,800원 판매가 : 4,800원 상품 간략설명 : 힘이 나는 건강반찬! 품절 부지깽이나물볶음 100g 향도 좋고, 맛도 좋은 부지갱이나물 소비자가 : 4,600원 판매가 : 4,600원 상품 간략설명 : 향도 좋고, 맛도 좋은 부지갱이나물 숙주나물 200g 깔끔하고 정갈한 나물반찬 소비자가 : 4,000원 판매가 : 4,000원 상품 간략설명 : 깔끔하고 정갈한 나물반찬 무제사나물 200g 건강한 나물반찬 소비자가 : 3,500원 판매가 : 3,500원 상품 간략설명 : 건강한 나물반찬 고사리나물볶음 200g 명절과 생일상에 빠지지않는 반찬 소비자가 : 4,500원 판매가 : 4,500원 상품 간략설명 : 명절과 생일상에 빠지지않는 반찬 콩나물제사나물 200g 아삭한 집밥의 기본반찬 소비자가 : 3,500원 판매가 : 3,500원 상품 간략설명 : 아삭한 집밥의 기본반찬 품절 도라지나물볶음 120g 쌉쌀하고 담백하게 볶아낸 소비자가 : 4,500원 판매가 : 4,500원 상품 간략설명 : 쌉쌀하고 담백하게 볶아낸 진가네 나물반찬 전체보기 진가네 장아찌 마늘쫑장아찌 100g 국내산 마늘쫑으로 직접 담은 소비자가 : 4,000원 판매가 : 4,000원 상품 간략설명 : 국내산 마늘쫑으로 직접 담은 아삭이고추 장아찌 100g 새콤달콤한 양념과 아삭한 고추의 기분좋은 조화 소비자가 : 4,300원 판매가 : 4,300원 상품 간략설명 : 새콤달콤한 양념과 아삭한 고추의 기분좋은 조화 영양비빔젓갈 200g 팔방미인 젓갈반찬 소비자가 : 5,500원 판매가 : 5,500원 상품 간략설명 : 팔방미인 젓갈반찬 품절 깐마늘장아찌 150g 두고두고 먹을 수 있는 건강반찬 소비자가 : 3,900원 판매가 : 3,900원 상품 간략설명 : 두고두고 먹을 수 있는 건강반찬 창란젓갈 150g 입맛을 사로잡는 밥도둑! 소비자가 : 5,000원 판매가 : 5,000원 상품 간략설명 : 입맛을 사로잡는 밥도둑! 청양고추 장아찌 100g 맛있는 매콤함 소비자가 : 4,500원 판매가 : 4,500원 상품 간략설명 : 맛있는 매콤함 낙지젓갈 150g 젓갈계의 황태자! 소비자가 : 6,200원 판매가 : 6,200원 상품 간략설명 : 젓갈계의 황태자! 깻잎장아찌 100g 새콤달콤한 양념과 향긋한 깻잎향의 조화 소비자가 : 4,300원 판매가 : 4,300원 상품 간략설명 : 새콤달콤한 양념과 향긋한 깻잎향의 조화 명란젓갈 200g 명란이라 더 고급스러운! 소비자가 : 13,000원 판매가 : 13,000원 상품 간략설명 : 명란이라 더 고급스러운!'
+
+
+    function informationStartIndex(productData, productName) {
+      return productData.indexOf(productName);
+    }
+
+    function productNameWithWeight(productData, productNameStartIndex, matchWord) {
+      return productData.slice(productNameStartIndex, productData.indexOf(matchWord, productNameStartIndex) + 1).trim();
+    }
+
+    function productIntro(lengthOfPreTarget, startMatchWord, startIndex, endMatchWord) {
+      return productData.slice(productData.indexOf(startMatchWord, startIndex + lengthOfPreTarget) + 1,
+        productData.indexOf(endMatchWord, startIndex)).trim();
+    }
+
+    function productInformationPush(productNameWithWeight, productIntro, productPrice, productImage) {
+      let productInformation = [];
+      productInformation.push(productNameWithWeight);
+      productInformation.push(productIntro);
+      productInformation.push(productPrice);
+      productInformation.push(productImage);
+      return productInformation;
+    }
+
+    let displayProduct = ['배추포기김치', '진가네 겉절이김치', '열무물김치', '총각김치', '새우볶음', '검정콩조림', '멸치양념조림', '도매전용 쥐포양념볶음',
+      '한우육개장(냉동)', '들깨북어미역국(냉동)', '해물순두부국', '배추시래기국(냉동)', '계란말이', '두부양념조림', '메추리알 장조림', '소고기장조림',
+      '해물부추전', '김치전', '진가네 깻잎전', '동그랑땡', '모둠나물', '건취나물볶음', '부지깽이나물볶음', '숙주나물', '마늘쫑장아찌', '아삭이고추 장아찌',
+      '영양비빔젓갈', '깐마늘장아찌'
+    ]
+
+    let productImageList = ['img/product/kimchi/item001.jpg', 'img/product/kimchi/item002.jpg', 'img/product/kimchi/item003.jpg', 'img/product/kimchi/item004.jpg',
+      'img/product/mitbanchan/mbc001.jpg', 'img/product/mitbanchan/mbc002.jpg', 'img/product/mitbanchan/mbc003.jpg', 'img/product/mitbanchan/mbc004.jpg',
+      'img/product/soup/soup001.jpg', 'img/product/soup/soup002.jpg', 'img/product/soup/soup003.jpg', 'img/product/soup/soup004.jpg',
+      'img/product/mainbanchan/mabc001.jpg', 'img/product/mainbanchan/mabc002.jpg', 'img/product/mainbanchan/mabc003.jpg', 'img/product/mainbanchan/mabc004.jpg',
+      'img/product/jeon/jeon001.jpg', 'img/product/jeon/jeon002.jpg', 'img/product/jeon/jeon003.jpg', 'img/product/jeon/jeon004.jpg',
+      'img/product/namul/namul001.jpg', 'img/product/namul/namul002.jpg', 'img/product/namul/namul003.jpg', 'img/product/namul/namul004.jpg',
+      'img/product/jjangachi/jjan001.jpg', 'img/product/jjangachi/jjan002.jpg', 'img/product/jjangachi/jjan003.jpg', 'img/product/jjangachi/jjan004.jpg'
+    ]
+
+
+    //있는지 부터 확인
+
+    function dataMatchValidator(displayProduct) {
+      for (let i = 0; i < displayProduct.length; i++) {
+        if (productData.includes(displayProduct[i]) == false) {
+          let n = i + 1;
+          alert('꼴뚜기님. 제품정보에 없는 displayProduct가 존재합니다.  ' + n + '번째 녀석을 확인하세요')
+        };
+      }
+
+    }
+
+    // 이미지도 이번주 내에 통합해보자
+
+    function createProdutsSet(productList, productImageList) {
+      dataMatchValidator(productList);
+      let productInformation = [];
+      for (let i = 0; i < productList.length; i++) {
+        let startIndex = informationStartIndex(productData, productList[i]);
+        let name = productNameWithWeight(productData, startIndex, 'g');
+        let intro = productIntro(name.length, '', startIndex, '소비자가');
+        let price = productIntro(name.length, ':', startIndex, '판매가');
+        let image = productImageList[i];
+        productInformation.push(productInformationPush(name, intro, price, image));
+      }
+      return productInformation;
+    }
+
+
+
+
+
+    /* !!페이지 작성 */
+    /* 상품 정보 */
+    let productInformation = createProdutsSet(displayProduct, productImageList);
+
+    /* 찾기 메서드 v0.01 */
+    // 검색어(word)와 상품명(searchTarget)을 비교하여 일치한 경우 해당 인덱스를 result에 push하여 인덱스 배열을 반환 
+    function searchResultIndex(word, searchTarget) {
+      let result = [];
+      for (let i = 0; i < searchTarget.length; i++) {
+        if (searchTarget[i][0].indexOf(word) >= 0) {
+          result.push(i);
+        }
+      }
+      return result;
+    }
+
+    // searchResultIndex()메서드에서 반환된 인덱스 배열과 상품 정보 배열()
+    function printSearchedInformation(productInformation, searchResultIndex) {
+      for (let i = 0; i < searchResultIndex.length; i++) {
+        printByClass('div0Clone', i, createImgWithId('img', productInformation[searchResultIndex[i]][3], productInformation[searchResultIndex[i]][0], 'img00' + searchResultIndex[i]) + createTagWithClass('p', 0) + createTagWithClass('p', 1) + createTagWithClass('p', 2))
+        printByClass('p0Clone', i, productInformation[searchResultIndex[i]][0]);
+        printByClass('p1Clone', i, productInformation[searchResultIndex[i]][1]);
+        printByClass('p2Clone', i, productInformation[searchResultIndex[i]][2]);
+      }
+    }
+
+    // 입력값이 없는 경우 경고창 알림
+    function searchException(word) {
+      if (word === null || word === "") {
+        alert('검색어를 입력해 주세요.')
+      }
+    }
+
+    // 검색 결과가 없는 경우 메세지 출력
+    function printNothingMessage(searchResult) {
+      if (searchResult.length <= 0) {
+        alert('검색 결과가 없습니다');
+      }
+    }
+
+    // 검색 결과 출력
+    function printSearchResult(productInformation) {
+      let word = document.getElementById('word').value.trim();
+      searchException(word);
+      let result = searchResultIndex(word, productInformation)
+      printNothingMessage(result);
+      document.getElementsByClassName('beverage')[0].style.diplay = 'none';
+      printByClass('product', 0, cloneTags(createTagWithClass('div', '0'), result.length));
+      printSearchedInformation(productInformation, result);
+    }
+
+
+    let beverageInformation = [
+      ['수정과', '달달 계피향 가득', '3,000원', 'https://www.hansik.or.kr//files/323/img/e4389072-65f8-4f6b-9daf-3931e84b68cc.png'],
+      ['오미자화채', '달콤 과일 듬뿍', '4,500원', 'https://www.hansik.or.kr//files/323/img/c47b022e-8c02-4805-ab28-7ac012fac548.png'],
+      ['매실차', '시원 새콤 팡팡', '3,000원', 'https://www.hansik.or.kr//files/323/img/014832bd-ad15-4638-99ed-29516f9a29b4.png']
+    ];
+
+    setInterval(repeat, 10500);
+
+
+
+    printCloneBlockBeverage(beverageInformation, 'beverage', 0, cloneTags(createTagWithClass('div', '1'), 3));
+
+    printCloneBlock(productInformation, 'product', 0, cloneTags(createTagWithClass('div', '0'), productInformation.length));
+
+  </script>
+
+</body>
+
+</html>
